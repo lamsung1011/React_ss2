@@ -6,6 +6,7 @@ import Todo from './views/Todo';
 import Covid from './views/Covid';
 import { Countdown, NewCountdown } from './views/Countdown';
 import Blog from './views/Blog';
+import AddNewBlog from './views/AddNewBlog';
 import DetailBlog from './views/DetailBlog';
 import {
   BrowserRouter as Router,
@@ -72,19 +73,19 @@ const App = () => {
           <img src={logo} className="App-logo" alt="logo" />
 
 
-
-
-
         </header>
+
         <Switch>
           <Route path="/" exact>
             <Covid />
           </Route>
+
           <Route path="/timer">
             <Countdown />
             <span>----------------------------------</span>
             <NewCountdown onTimesUp={onTimesUp} />
           </Route>
+
           <Route path="/todo">
             <Todo
               todos={todos}
@@ -103,8 +104,13 @@ const App = () => {
           <Route path="/blog" exact>
             <Blog />
           </Route>
+
           <Route path="/blog/:id">
             <DetailBlog />
+          </Route>
+
+          <Route path="/add-new-blog">
+            <AddNewBlog />
           </Route>
         </Switch>
       </div>
