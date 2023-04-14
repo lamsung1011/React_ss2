@@ -5,6 +5,14 @@ import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
 import Covid from './views/Covid';
 import { Countdown, NewCountdown } from './views/Countdown';
+import Blog from './views/Blog';
+import DetailBlog from './views/DetailBlog';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 const App = () => {
@@ -21,10 +29,10 @@ const App = () => {
 
   // didmount => chạy 1 lần duy nhất
   useEffect(() => {
-    console.log('Run Use Effect');
+    // console.log('Run Use Effect');
   }, [address]);
   useEffect(() => {
-    console.log('Run Use Effect Todos');
+    // console.log('Run Use Effect Todos');
   }, [todos]);
 
   const handleEventClick = (event) => {
@@ -55,36 +63,52 @@ const App = () => {
   }
 
   return (
+    <Router>
+      <div className="App">
 
-    <div className="App">
+        <header className="App-header">
+          <Nav />
 
-      <header className="App-header">
-        <Nav />
-
-        <img src={logo} className="App-logo" alt="logo" />
-        <Countdown />
-        <span>----------------------------------</span>
-        <NewCountdown onTimesUp={onTimesUp} />
-        <h1>Hello world - React from {name}</h1>
-        <Covid />
+          <img src={logo} className="App-logo" alt="logo" />
 
 
 
 
-        {/* <Todo
-          todos={todos}
-          title={'all todo'}
-          deleteDataTodo={deleteDataTodo}
-        />
-        <Todo
-          todos={todos.filter(item => item.type === 'Blind')}
-          title={`Mù's Todos`}
-        />
 
-        <input type='text' value={address} onChange={(event) => handleOnchangeInput(event)} />
-        <button type='button' onClick={(event) => handleEventClick(event)}>Click me</button> */}
-      </header>
-    </div>
+        </header>
+        <Switch>
+          <Route path="/" exact>
+            <Covid />
+          </Route>
+          <Route path="/timer">
+            <Countdown />
+            <span>----------------------------------</span>
+            <NewCountdown onTimesUp={onTimesUp} />
+          </Route>
+          <Route path="/todo">
+            <Todo
+              todos={todos}
+              title={'all todo'}
+              deleteDataTodo={deleteDataTodo}
+            />
+            <Todo
+              todos={todos.filter(item => item.type === 'Blind')}
+              title={`Mù's Todos`}
+            />
+
+            <input type='text' value={address} onChange={(event) => handleOnchangeInput(event)} />
+            <button type='button' onClick={(event) => handleEventClick(event)}>Click me</button>
+          </Route>
+
+          <Route path="/blog" exact>
+            <Blog />
+          </Route>
+          <Route path="/blog/:id">
+            <DetailBlog />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
