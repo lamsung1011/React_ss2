@@ -9,7 +9,7 @@ const Nav = () => {
             <NavLink activeClassName="active" to="/timer">Timer App</NavLink>
             <NavLink activeClassName="active" to="todo">Todos App</NavLink>
             <NavLink activeClassName="active" to="/blog">Blog App</NavLink>
-            <NavLink activeClassName="active" to="#about">Secret App</NavLink>
+            <NavLink activeClassName="active" to="/secret">Secret App</NavLink>
         </div>
 
     )

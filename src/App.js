@@ -8,6 +8,8 @@ import { Countdown, NewCountdown } from './views/Countdown';
 import Blog from './views/Blog';
 import AddNewBlog from './views/AddNewBlog';
 import DetailBlog from './views/DetailBlog';
+import NotFound from './views/NotFound';
+import YoutubeSearch from './views/YoutubeSearch';
 import {
   BrowserRouter as Router,
   Switch,
@@ -111,6 +113,14 @@ const App = () => {
 
           <Route path="/add-new-blog">
             <AddNewBlog />
+          </Route>
+
+          <Route path="/secret">
+            <YoutubeSearch />
+          </Route>
+
+          <Route path="/*">
+            <NotFound />
           </Route>
         </Switch>
       </div>
